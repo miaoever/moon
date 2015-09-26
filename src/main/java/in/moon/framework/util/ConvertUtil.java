@@ -21,12 +21,16 @@ public class ConvertUtil {
             this.obj = obj;
         }
 
+        public String toStr() {
+            return toStrByDeault("");
+        }
+
         public String toStrByDeault(String val) {
             return obj != null ? String.valueOf(obj) : val;
         }
 
-        public String toStr() {
-            return toStrByDeault("");
+        public double toDouble() {
+            return toDoubleByDefault(0);
         }
 
         public double toDoubleByDefault(double val) {
@@ -44,10 +48,6 @@ public class ConvertUtil {
             return value;
         }
 
-        public double toDouble() {
-            return toDoubleByDefault(0);
-        }
-
         public long toLong() {
             return toLongByDefault(0);
         }
@@ -63,6 +63,37 @@ public class ConvertUtil {
                         value = val;
                     }
                 }
+            }
+            return value;
+        }
+
+        public int toInt() {
+            return toIntByDefault(0);
+        }
+
+        public int toIntByDefault(int val) {
+            int value = val;
+            if (obj != null) {
+                String strVal = toStr();
+                if (StringUtils.isNotEmpty(strVal)) {
+                    try {
+                        value = Integer.parseInt(strVal);
+                    } catch (NumberFormatException e) {
+                        value = val;
+                    }
+                }
+            }
+            return value;
+        }
+
+        public boolean toBool() {
+            return toBoolByDefault(false);
+        }
+
+        public boolean toBoolByDefault(boolean val) {
+            boolean value = val;
+            if (obj != null) {
+                value = Boolean.parseBoolean(toStr());
             }
             return value;
         }

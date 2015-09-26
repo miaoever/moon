@@ -20,5 +20,13 @@ public class ConvertUtilTest extends TestCase {
         String val3 = "10.24";
         Assert.assertEquals(10.24D, ConvertUtil.convert(val3).toDouble(), 0.001);
         Assert.assertEquals(10.24D, ConvertUtil.convert(null).toDoubleByDefault(10.24D), 0.001);
+
+        String val4 = "1024";
+        Assert.assertEquals(1024, ConvertUtil.convert(val4).toInt());
+        Assert.assertEquals(1024, ConvertUtil.convert(null).toIntByDefault(1024));
+
+        String val5 = "true";
+        Assert.assertEquals(true, ConvertUtil.convert(val5).toBool());
+        Assert.assertEquals(false, ConvertUtil.convert(null).toBoolByDefault(false));
     }
 }
