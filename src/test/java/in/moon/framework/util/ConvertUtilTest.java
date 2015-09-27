@@ -11,7 +11,7 @@ public class ConvertUtilTest extends TestCase {
     public void testConvert() throws Exception {
         Long val1 = 1024L;
         Assert.assertEquals("1024", ConvertUtil.convert(val1).toStr());
-        Assert.assertEquals("0000", ConvertUtil.convert(null).toStrByDeault("0000"));
+        Assert.assertEquals("0000", ConvertUtil.convert(null).toStrByDefault("0000"));
 
         String val2 = "1024";
         Assert.assertEquals(1024L, ConvertUtil.convert(val2).toLong());

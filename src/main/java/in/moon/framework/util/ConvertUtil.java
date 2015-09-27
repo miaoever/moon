@@ -22,10 +22,10 @@ public class ConvertUtil {
         }
 
         public String toStr() {
-            return toStrByDeault("");
+            return toStrByDefault("");
         }
 
-        public String toStrByDeault(String val) {
+        public String toStrByDefault(String val) {
             return obj != null ? String.valueOf(obj) : val;
         }
 
