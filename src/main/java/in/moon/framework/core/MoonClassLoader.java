@@ -57,6 +57,10 @@ public final class MoonClassLoader {
             }
         });
 
+        if (files == null) {
+            return new HashSet<Class<?>>();
+        }
+
         for (File file : files) {
             String fileName = file.getName();
             if (file.isFile()) {
@@ -68,13 +72,13 @@ public final class MoonClassLoader {
             } else {
                 String subPackagePath = fileName;
                 if (StringUtils.isNotEmpty(packageName)) {
-                    subPackagePath = packageName + "/" + subPackagePath;
+                    subPackagePath = packagePath + "/" + subPackagePath;
                 }
                 String subPackageName = fileName;
                 if (StringUtils.isNotEmpty(packageName)) {
                     subPackageName = packageName + "." + subPackageName;
                 }
-                classes.addAll(loadClassFromFiles(subPackagePath, subPackageName));
+                classes.addAll(loadClassFromFiles(subPackageName, subPackagePath));
             }
         }
 
@@ -105,7 +109,6 @@ public final class MoonClassLoader {
                 }
             }
 
-
         } catch (Exception e) {
             LOGGER.error("Faild to load classed from jar: " + url.getPath(), e);
             throw new RuntimeException(e);
@@ -113,7 +116,6 @@ public final class MoonClassLoader {
 
         return classes;
     }
-
 
     public static Set<Class<?>> getClasses(String packageName) {
         Set<Class<?>> classes = new HashSet<Class<?>>();
@@ -135,6 +137,6 @@ public final class MoonClassLoader {
             LOGGER.error("Failed to get classes in Package: " + packageName, e);
             throw new RuntimeException(e);
         }
-        return null;
+        return classes;
     }
 }
