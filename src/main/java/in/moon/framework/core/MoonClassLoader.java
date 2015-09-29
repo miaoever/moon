@@ -16,6 +16,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /** Load classed from package
+ *
  * Created by miaoever on 9/27/15.
  */
 public final class MoonClassLoader {
@@ -40,7 +41,6 @@ public final class MoonClassLoader {
         }
         return clazz;
     }
-
 
     public static Set<Class<?>> loadClassFromFiles(String packageName, URL url) {
         String packagePath = url.getPath().replaceAll("%20", " ");
