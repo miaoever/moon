@@ -6,7 +6,8 @@ import in.moon.framework.annotation.Service;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
+/** Load beans context
+ *
  * Created by miaoever on 9/28/15.
  */
 public class MoonContextLoader {
